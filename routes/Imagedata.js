@@ -3,7 +3,7 @@ const ImageSchema =require('../modules/Imagesave');
 const router = express.Router();
 const multer=require('multer')
 var fetchUser= require('../middleware/fetchuser');
-const { default: userEvent } = require('@testing-library/user-event');
+// const { default: userEvent } = require('@testing-library/user-event');
 const Storage =multer.diskStorage({
     destination:'uploads',
     filename:(req,file,cb)=>{

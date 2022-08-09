@@ -5,7 +5,7 @@ const { body, validationResult } = require('express-validator');
 const Notes =require('../modules/Notes');
 // const { pdf } = require('react-native-ico-file-folder/src/data');
 // const pdfTemplate = require('./documents');
-const pdf = require('html-pdf');
+// const pdf = require('html-pdf');
 
 router.get('/fetchallnotes',fetchUser,async(req,res)=>{
     try{
@@ -39,21 +39,21 @@ router.post('/addnote',[fetchUser,[
         res.status(500).send("backend ki error in notes")
     }
 })
-router.post('/create-pdf',async(req,res)=>{
+// router.post('/create-pdf',async(req,res)=>{
     
-        pdf.create(pdfTemplate(req.body), {}).toFile('result.pdf', (err) => {
-            if(err) {
-                res.send(Promise.reject());
-            }
+//         pdf.create(pdfTemplate(req.body), {}).toFile('result.pdf', (err) => {
+//             if(err) {
+//                 res.send(Promise.reject());
+//             }
     
-            res.send(Promise.resolve())
-        });
-    });
+//             res.send(Promise.resolve())
+//         });
+//     });
 
 
-router.get('/fetch-pdf', (req, res) => {
-    res.sendFile(`${__dirname}/result.pdf`)
-})
+// router.get('/fetch-pdf', (req, res) => {
+//     res.sendFile(`${__dirname}/result.pdf`)
+// })
  
 router.put('/updatenote/:id',fetchUser,async(req,res)=>{
     const {title,discription}=req.body;
