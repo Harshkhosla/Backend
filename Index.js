@@ -23,4 +23,11 @@ app.use('/api/pdf',require('./routes/pdfData'))
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
-})
+});
+
+
+app.get('/', (req,res,next)=> {
+
+  return res.json("We are up and running");
+
+});
