@@ -17,7 +17,7 @@ router.post('/healthId',async(req,res)=>{
             let alldata =  [user, Images]
         // const notes =await Notes.find({schema:req.user.id})
             res.json(alldata)
-            console.log(alldata)
+            // console.log(alldata)
         }catch(error){
             console.error(error.message);
             res.status(500).send("backend ki error")

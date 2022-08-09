@@ -63,7 +63,7 @@ router.put('/updatenote/:id',fetchUser,async(req,res)=>{
     if(discription){newNote.discription=discription}    
 
     let note =await Notes.findById(req.params.id);
-    console.log(note);
+    // console.log(note);
     if(!note){return res.status(404).send('not found')}
     if (note.user!=req.user.id){
         return res.status(401).send('Hacker')
@@ -76,7 +76,7 @@ router.delete('/deletenote/:id',fetchUser,async(req,res)=>{
     // debugger
    
     let note =await Notes.findById(req.params.id);
-    console.log(note);
+    // console.log(note);
     if(!note){return res.status(404).send('not found')}
     if (note.user!=req.user.id){
         return res.status(401).send('Hacker')

@@ -36,7 +36,7 @@ router.post('/saveimage',fetchUser,async(req,res)=>{
             }
         })
     }catch(error){
-        console.error(error.message);
+        // console.error(error.message);
         res.status(500).send("backend ki error")
     }
 
@@ -59,8 +59,8 @@ router.delete('/deleteImage/:id',fetchUser,async(req,res)=>{
         let images = await ImageSchema.findById(req.params.id)
         // console.log(req.params.id);
         // console.log(images._id.toString());
-        console.log(images.user.toString());
-        console.log(req.user.id);
+        // console.log(images.user.toString());
+        // console.log(req.user.id);
         if(!images){return res.status(404).send('not found')}
     if (images.user.toString()!==req.user.id){
         return res.status(401).send('Hacker')

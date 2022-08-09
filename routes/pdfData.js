@@ -18,7 +18,7 @@ const Storage =multer.diskStorage({
   try{
     datas(req,res,(err)=>{
         if(err){
-            console.log(err);
+            // console.log(err);
         }else{
             const newPdf = new PdfData ({
                 name: req.body.name,
@@ -38,7 +38,7 @@ const Storage =multer.diskStorage({
  router.get('/getallPdf/:id',async(req,res)=>{
     try{
         const PDF = await PdfData.find({schema:req.params.id})
-        console.log(PDF);
+        // console.log(PDF);
         res.json({PDF})
     }catch(error){
        res.status(500).send("you are sending the wrong data")

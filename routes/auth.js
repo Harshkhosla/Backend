@@ -63,7 +63,7 @@ router.post ('/login',[
   const {email,password}=req.body;
   try{
     let user = await  UserSignin.findOne({email});
-    console.log(user);
+    // console.log(user);
     if (!user){
       success=false;
         return res.status(400).json({error:"sorry user dose not  exists "});
