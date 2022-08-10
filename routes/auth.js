@@ -43,7 +43,7 @@ router.post ('/createuser',[
     res.json({authtoken,message,success}) 
   }catch(error){
       console.error(error.message);
-      res.status(500).send("backend ki error")
+      res.status(500).send(error)
   }
   //   .then(user => res.json(user));
 })
