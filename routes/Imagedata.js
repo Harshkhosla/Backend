@@ -47,7 +47,8 @@ router.post('/saveimage',fetchUser,async(req,res)=>{
 
 router.get('/getallimages',fetchUser,async(req,res)=>{
     try{
-        const images = await ImageSchema.find({req:req.user.id})
+        console.log(req.user.id);
+        const images = await ImageSchema.find({user:req.user.id})
         res.json({images})
     }catch(error){
        res.status(500).send("you are sendinding the wrong data")
