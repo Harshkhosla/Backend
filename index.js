@@ -26,8 +26,8 @@ app.listen(port, () => {
 });
 
 
-// app.get('/', (req,res,next)=> {
+app.get('/', (req,res,next)=> {
 
-//   return res.json("We are up and running");
+  return res.json("We are up and running");
 
-// });
+});
