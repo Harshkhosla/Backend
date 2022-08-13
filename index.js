@@ -20,6 +20,8 @@ app.use('/api/notes',require('./routes/notes'))
 app.use('/api/health',require('./routes/healthId'))
 app.use('/api/Image',require('./routes/Imagedata'))
 app.use('/api/pdf',require('./routes/pdfData'))
+app.use('/api/information',require('./routes/Information'))
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
