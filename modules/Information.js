@@ -15,7 +15,8 @@ const Informtaion =new Schema({
 },
 Adress: [{ addressLine1: String, addressLine2: String ,city:String,state:String ,postalCode:Number}],
 adharNo:Number,
-PhoneNo:Number
+PhoneNo:Number,
+BloodGroup:String
 
 })
 module.exports= mongoose.model('information',Informtaion)
