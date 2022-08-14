@@ -95,12 +95,31 @@ router.post ('/login',[
 router.post ('/getuser',fetchUser,async(req,res)=>{
   try{
     userID=req.user.id;
+    console.log(userID);
     const user = await UserSignin.findById(userID).select("-password")
     res.send(user);
   }catch(error){
     console.error(error.message);
     res.status(500).send("internal  backend  ki error")
   }
-  }); 
+  });
+  
+  
+router.put('/updatename/:id',fetchUser,async(req,res)=>{
+    const {name}=req.body;
+    // debugger
+    userID=req.user.id;
+    const newNote={}
+    if(name){newNote.name=name}
+       
+//  console.log(req);
+    let note =await UserSignin.findById(req.params.id);
+    // console.log(note);
+    if(!note){return res.status(404).send('not found')}
+    
+    note = await UserSignin.findByIdAndUpdate(req.params.id,{$set:newNote},{new:true})
+    res.json(note)
+
+})
 
 module.exports=router;
