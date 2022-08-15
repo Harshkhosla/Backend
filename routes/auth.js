@@ -117,8 +117,51 @@ router.put('/updatename/:id',fetchUser,async(req,res)=>{
     // console.log(note);
     if(!note){return res.status(404).send('not found')}
     
-    note = await UserSignin.findByIdAndUpdate(req.params.id,{$set:newNote},{new:true})
+    note = await UserSignin.findByIdAndUpdate(req.params.id,{$set:newNote},{new:true}).select("-password")
     res.json(note)
+
+})
+
+
+
+router.put('/UserInformation/:id',[fetchUser],async(req,res)=>{
+  try{
+      // const errors = validationResult(req);
+      userID=req.user.id;
+      let user =await UserSignin.findOne({email:req.body.email});
+if (user){
+    return res.status(400).json({error:"Sorry user already exists "})
+}
+const {adharNo,PhoneNo,BloodGroup,addressLine1,addressLine2,city,state,postalCode}=req.body
+// const addressLine1=req.body.addressLine1
+const newInformation={}
+
+if(adharNo){newInformation.adharNo=adharNo}
+if(PhoneNo){newInformation.PhoneNo=PhoneNo}
+if(BloodGroup){newInformation.BloodGroup=BloodGroup}
+if(addressLine1){newInformation.addressLine1=addressLine1}
+if(addressLine2){newInformation.addressLine2=addressLine2}
+if(city){newInformation.city=city}
+if(state){newInformation.state=state}
+if(postalCode){newInformation.postalCode=postalCode}
+// if(email){newInformation.email=email} 
+let information =await UserSignin.findById(req.params.id);
+// console.log(information);
+
+if(!information){return res.status(404).send('not found')}
+console.log(newInformation);
+
+  information = await UserSignin.findByIdAndUpdate(req.params.id,{$set:newInformation},{new:true}).select("-password")
+
+
+       
+      res.json(information)
+     
+  }catch(error){
+      // console.error(error.message);
+      res.status(500).send("Somthing went wrong")
+  }
+
 
 })
 

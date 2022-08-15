@@ -18,7 +18,15 @@ const UserSchema =new Schema({
     password:{
         type: String,
         required:true
-    }
+    },
+    adharNo:Number,
+    PhoneNo:Number,
+    BloodGroup:String,
+    addressLine1: String, 
+    addressLine2: String ,
+    city:String,
+    state:String ,
+    postalCode:Number
 
 })
 module.exports = mongoose.model('user',UserSchema)
