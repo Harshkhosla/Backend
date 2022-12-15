@@ -85,4 +85,13 @@ router.delete('/deletenote/:id',fetchUser,async(req,res)=>{
     res.json({"Sucess":true,note:note})
 
 })
+router.get('/deletenoteee',(req,res)=> {
+    const obj = {
+      name: req.body
+    }
+      // const name = req.body
+    console.log(obj);
+    // res.send(req.body)
+    res.send("hello")
+    })
 module.exports=router;  
