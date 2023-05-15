@@ -26,7 +26,13 @@ const UserSchema =new Schema({
     addressLine2: String ,
     city:String,
     state:String ,
-    postalCode:Number
+    postalCode:Number,
+    Project:String,
+    Task:String,
+    TaskDescription:String,
+    Time: String, 
+    TotalTime: String ,
+    Status:String,
 
 })
 module.exports = mongoose.model('user',UserSchema)

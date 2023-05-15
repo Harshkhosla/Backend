@@ -43,7 +43,7 @@ const { body, validationResult } = require('express-validator');
 
 
 
-// ----------------------------------------------------------need to check this------------------------------------------------------------------//
+//----------------------------------------------------------need to check this------------------------------------------------------------------//
 
 router.post('/information',[fetchUser],async(req,res)=>{
     try{
@@ -51,9 +51,7 @@ router.post('/information',[fetchUser],async(req,res)=>{
         let user =await information.findOne({email:req.body.email});
   if (user){
       return res.status(400).json({error:"Sorry user already exists "})
-  }
-        
-   
+  }   
         const name =req.body.name
         const {email,Adress,adharNo,PhoneNo}=req.body
         const information =new  information({
@@ -67,21 +65,7 @@ router.post('/information',[fetchUser],async(req,res)=>{
         // console.error(error.message);
         res.status(500).send("Somthing went wrong")
     }
- 
- 
 })
-
-
-
-
-
-
-
-
-
-
-
-
 
 router.get('/fetchallData',fetchUser,async(req,res)=>{
     try{
