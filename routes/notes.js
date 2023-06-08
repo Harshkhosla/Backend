@@ -24,13 +24,13 @@ router.post('/addnote',[fetchUser,[
 ]],async(req,res)=>{
     try{
 
-        const {title,discription,tag}=req.body
+        const {title,discription,tag,name,contactNo,place, setectDate, selectHour}=req.body
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
           return res.status(400).json({ errors: errors.array() });
         }
         const note = new Notes({            
-            title,discription,tag,user:req.user.id,schema:req.user.id
+            title,discription,tag,name,contactNo,place,setectDate,selectHour,user:req.user.id,schema:req.user.id
         })
         const savedNote = await note.save()
         res.json(savedNote)
