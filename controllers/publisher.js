@@ -6,13 +6,13 @@ const MQTT_HOST_NAME = "mqtt://34.93.62.206:1883";
 var mqttClient = new mqttService(MQTT_HOST_NAME);
 mqttClient.connect();
 
-exports.getPublisherPage = async function (req, res) {
-  try {
-    res.render("pages/publisher");
-  } catch (error) {
-    return res.status(400).json({ status: 400, message: error.message });
-  }
-};
+// exports.getPublisherPage = async function (req, res) {
+//   try {
+//     res.render("pages/publisher");
+//   } catch (error) {
+//     return res.status(400).json({ status: 400, message: error.message });
+//   }
+// };
 
 exports.publishMQTTMessage = async function (req, res) {
   try {
