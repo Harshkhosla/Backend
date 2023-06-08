@@ -121,7 +121,15 @@ router.put('/updatename/:id',fetchUser,async(req,res)=>{
     res.json(note)
 
 })
-
+router.get('/admin/users', async (req, res) => {
+  try {
+    const users = await UserSignin.find().select('-password');
+    res.json(users);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Internal server error');
+  }
+});
 
 
 router.put('/UserInformation/:id',[fetchUser],async(req,res)=>{

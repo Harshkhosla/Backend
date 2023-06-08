@@ -23,6 +23,10 @@ app.use('/api/health',require('./routes/healthId'))
 app.use('/api/Image',require('./routes/Imagedata'))
 app.use('/api/pdf',require('./routes/pdfData'))
 app.use('/api/information',require('./routes/Information'))
+app.use('/api/subscriber',require('./routes/subscriber'))
+app.use('/api/publisher',require('./routes/publisher'))
+// app.use('/admin',require('./routes/admin'))
+
 
 // require('http1')
 // .createServer(app)
@@ -36,14 +40,7 @@ app.listen(port, () => {
 
 
 app.get('/', (req,res,next)=> {
-  res.set('Server', 'MyServer/1.0 (Node.js) HTTP/1.0');
 
-  // Get the HTTP version
-  const httpVersion = req.httpVersion;
-
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end(`HTTP Version: ${httpVersion}`);
-  // return res.send("We are up and running", res.getHeaders());
-  // return res.send(res.header("httpVersion"));
+  return res.json("We are up and running");
 
 });

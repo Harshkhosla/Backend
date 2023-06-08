@@ -18,6 +18,20 @@ const NotesSchema =new Schema({
         type: String,
         required:true,
     },
+    name:{
+        type: String,
+    },
+    contactNo:{
+        type: String,
+    },
+    place:{
+        type: String,
+    },
+    setectDate:{
+        type: String,
+    },selectHour:{
+        type: String,
+    },
     tag:{
         type: String,
     },
