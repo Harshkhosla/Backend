@@ -8,16 +8,6 @@ const MQTT_HOST_NAME = "mqtt://34.93.62.206:1883";
 var mqttClient = new mqttService(MQTT_HOST_NAME);
 mqttClient.connect();
 
-// exports.getSubscriberPage = async function (req, res) {
-//   try {
-//     res.render("pages/subscriber");
-//   } catch (error) {
-//     console.log(error);
-//     res
-//       .status(400)
-//       .json({ status: 400, message: "Error getting subscriber page" });
-//   }
-// };
 
 exports.subscriberController = async function (req, res) {
   try {
