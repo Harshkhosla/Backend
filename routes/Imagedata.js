@@ -68,11 +68,32 @@ router.delete('/deleteImage/:id',fetchUser,async(req,res)=>{
     if (images.user.toString()!==req.user.id){
         return res.status(401).send('Hacker')
     }
+
+
+
+
+
+
+
+    
     images = await ImageSchema.findByIdAndDelete(req.params.id)  
     res.json({"Sucess":true,images:images})
     }catch(error){
         res.status(500).send("you are sendinding the wrong data")
     }
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports=router;
