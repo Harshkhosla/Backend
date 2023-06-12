@@ -68,6 +68,20 @@ router.put('/updatenote/:id',fetchUser,async(req,res)=>{
     if (note.user!=req.user.id){
         return res.status(401).send('Hacker')
     }
+// xxxx
+
+
+
+
+
+
+
+
+
+
+
+
+
     note = await Notes.findByIdAndUpdate(req.params.id,{$set:newNote},{new:true})
     res.json({note})
 
