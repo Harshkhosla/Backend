@@ -19,7 +19,7 @@ const Storage =multer.diskStorage({
 
 
 
-router.post('/saveimage',async(req,res)=>{
+router.post('/saveimage',fetchUser,async(req,res)=>{
     try{
         upload(req,res,(err)=>{
             if(err){
@@ -47,7 +47,7 @@ router.post('/saveimage',async(req,res)=>{
  
 })
 
-router.get('/getallimages',async(req,res)=>{
+router.get('/getallimages',fetchUser,async(req,res)=>{
     try{
         console.log(req.user.id);
         const images = await ImageSchema.find({user:req.user.id})
