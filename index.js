@@ -13,6 +13,7 @@ app.use(cors());
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 app.use('/uploads2', express.static('uploads2'));
+app.use('/video', express.static('video'));
 app.use('/datas', express.static('datas'));
 app.use(express.urlencoded({ extended: true }));
 
@@ -25,6 +26,7 @@ app.use('/api/pdf', require('./routes/pdfData'));
 app.use('/api/information', require('./routes/Information'));
 app.use('/api/subscriber', require('./routes/subscriber'));
 app.use('/api/publisher', require('./routes/publisher'));
+app.use('/api/Video', require('./routes/Videodata'));
 
 const server = http.createServer(app);
 
