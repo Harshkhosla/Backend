@@ -12,6 +12,7 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
+app.use('/uploads2', express.static('uploads2'));
 app.use('/datas', express.static('datas'));
 app.use(express.urlencoded({ extended: true }));
 
