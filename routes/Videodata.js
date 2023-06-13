@@ -12,7 +12,11 @@ const Storage = multer.diskStorage({
 });
 
 const upload = multer({
-  storage: Storage
+    
+  storage: Storage,
+  limits: {
+    fileSize: 100 * 1024 * 1024, // 50MB in bytes
+  },
 }).single('video');
 
 router.post('/savevideo',fetchUser, (req, res) => {
