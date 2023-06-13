@@ -16,6 +16,16 @@ const Storage =multer.diskStorage({
  }).single('image')
 
 
+const Storagee =multer.diskStorage({
+    destination:'uploads2',
+    filename:(req,file,cb)=>{
+        cb(null, file.originalname);
+    }
+ })
+ const upload2 = multer({
+    storage:Storagee
+ }).single('image')
+
 
 
 
@@ -59,7 +69,7 @@ router.post('/saveimagedata',fetchUser,async(req,res)=>{
             if(err){
                 console.log(err);
             }else{
-                const newImage =new ImageSchema({
+                const newImage =new ImageSchema1({
                     name: req.body.name,
                     user:req.user.id,
                     schema:req.user.id,  
@@ -84,7 +94,7 @@ router.post('/saveimagedata',fetchUser,async(req,res)=>{
 router.get('/getallimagesdata',fetchUser,async(req,res)=>{
     try{
         console.log(req.user.id);
-        const images = await ImageSchema.find({user:req.user.id})
+        const images = await ImageSchema1.find({user:req.user.id})
         res.json({images})
     }catch(error){
        res.status(500).send("you are sendinding the wrong data")
@@ -93,7 +103,7 @@ router.get('/getallimagesdata',fetchUser,async(req,res)=>{
 })
 router.delete('/deleteImagedata/:id',fetchUser,async(req,res)=>{
     try{
-        let images = await ImageSchema.findById(req.params.id)
+        let images = await ImageSchema1.findById(req.params.id)
         // console.log(req.params.id);
         // console.log(images._id.toString());
         // console.log(images.user.toString());
@@ -102,7 +112,7 @@ router.delete('/deleteImagedata/:id',fetchUser,async(req,res)=>{
     if (images.user.toString()!==req.user.id){
         return res.status(401).send('Hacker')
     }   
-    images = await ImageSchema.findByIdAndDelete(req.params.id)  
+    images = await ImageSchema1.findByIdAndDelete(req.params.id)  
     res.json({"Sucess":true,images:images})
     }catch(error){
         res.status(500).send("you are sendinding the wrong data")
