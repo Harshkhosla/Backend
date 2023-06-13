@@ -27,10 +27,6 @@ const Storagee =multer.diskStorage({
  }).single('image')
 
 
-
-
-
-
 router.post('/saveimage',fetchUser,async(req,res)=>{
     try{
         upload(req,res,(err)=>{
