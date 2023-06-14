@@ -17,20 +17,41 @@ router.get('/fetchallnotes',fetchUser,async(req,res)=>{
         res.status(500).send("backend ki error")
     }
 })
-router.post('/addnote',[fetchUser,[ 
-    body('title','Enter a valid title').isLength({ min: 3 }),
-    body('discription','description must be 5 characters').isLength({ min: 5}),
-     
-]],async(req,res)=>{
+
+
+router.get('/fetchallnotesofeveryuser',async(req,res)=>{
+    try{
+        
+        const notes =await Notes.find()
+        res.json(notes)
+    }catch(error){
+        console.error(error.message);
+        res.status(500).send("backend ki error")
+    }
+})
+router.post('/addnote',[fetchUser],async(req,res)=>{
     try{
 
-        const {title,discription,tag,name,contactNo,place, setectDate, selectHour}=req.body
+        const {title, discription, tag, name, contactNo, place, setectDate, selectHour,email,numberofpeople,hour,date}=req.body
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
           return res.status(400).json({ errors: errors.array() });
         }
         const note = new Notes({            
-            title,discription,tag,name,contactNo,place,setectDate,selectHour,user:req.user.id,schema:req.user.id
+            title,
+        discription,
+        tag,
+        name,
+        contactNo,
+        place,
+        setectDate,
+        selectHour,
+        email,
+        numberofpeople,
+        hour,
+        date,
+        user:req.user.id,
+        schema:req.user.id
         })
         const savedNote = await note.save()
         res.json(savedNote)
@@ -39,6 +60,45 @@ router.post('/addnote',[fetchUser,[
         res.status(500).send("backend ki error in notes")
     }
 })
+
+
+
+
+
+
+
+
+
+
+router.post('/addnotebyanyuser', async (req, res) => {
+    try {
+      const { title, discription, tag, name, contactNo, place, setectDate, selectHour,email,numberofpeople,hour,date } = req.body;
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+      }
+      const note = new Notes({
+        title,
+        discription,
+        tag,
+        name,
+        contactNo,
+        place,
+        setectDate,
+        selectHour,
+        email,
+        numberofpeople,
+        hour,
+        date
+      });
+      const savedNote = await note.save();
+      res.json(savedNote);
+    } catch (error) {
+      console.error(error.message);
+      res.status(500).send("Backend error in notes");
+    }
+  });
+  
 // router.post('/create-pdf',async(req,res)=>{
     
 //         pdf.create(pdfTemplate(req.body), {}).toFile('result.pdf', (err) => {

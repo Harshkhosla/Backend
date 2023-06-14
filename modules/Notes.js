@@ -12,11 +12,11 @@ const NotesSchema =new Schema({
     }, 
     title:{
         type: String,
-        required:true
+        // required:true
     },
     discription:{
         type: String,
-        required:true,
+        // required:true,
     },
     name:{
         type: String,
@@ -38,6 +38,18 @@ const NotesSchema =new Schema({
     Date:{
         type:Date,
         default: Date.now
+    },
+    email:{
+        type: String,
+    },
+    date:{
+        type: String,
+    },
+    hour:{
+        type: String,
+    },
+    numberofpeople:{
+        type: String,
     }
 
 })

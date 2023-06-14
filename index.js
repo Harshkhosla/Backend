@@ -1,7 +1,7 @@
 const ConnectToMongo = require('./db');
 const express = require('express');
 const cors = require('cors');
-const WebSocket = require('ws');
+// const WebSocket = require('ws');
 const http = require('http');
 
 ConnectToMongo();
@@ -26,28 +26,28 @@ app.use('/api/pdf', require('./routes/pdfData'));
 app.use('/api/information', require('./routes/Information'));
 app.use('/api/subscriber', require('./routes/subscriber'));
 app.use('/api/publisher', require('./routes/publisher'));
-app.use('/api/Video', require('./routes/Videodata'));
+app.use('/api/video', require('./routes/Videodata'));
 
 const server = http.createServer(app);
 
-const wss = new WebSocket.Server({ server });
+// const wss = new WebSocket.Server({ server });
 
-wss.on('connection', (ws) => {
-  console.log('WebSocket client connected');
+// wss.on('connection', (ws) => {
+//   console.log('WebSocket client connected');
 
-  ws.on('message', (message) => {
-    console.log('Received message:', message);
+//   ws.on('message', (message) => {
+//     console.log('Received message:', message);
 
-    // Process the received message as needed
+//     // Process the received message as needed
 
-    // Example: Echo the message back to the WebSocket client
-    ws.send(`You sent: ${message}`);
-  });
+//     // Example: Echo the message back to the WebSocket client
+//     ws.send(`You sent: ${message}`);
+//   });
 
-  ws.on('close', () => {
-    console.log('WebSocket client disconnected');
-  });
-});
+//   ws.on('close', () => {
+//     console.log('WebSocket client disconnected');
+//   });
+// });
 
 server.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
