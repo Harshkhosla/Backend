@@ -2,6 +2,7 @@ const express = require('express');
 const VideoSchema = require('../modules/Videosave');
 const router = express.Router();
 const multer = require('multer');
+var fetchUser = require('../middleware/fetchuser');
 
 const Storage = multer.diskStorage({
   destination: 'video',
@@ -17,25 +18,20 @@ const upload = multer({
   },
 }).single('video');
 
-router.post('/savevideo', (req, res) => {
-    // console.log("hello")
-    // debugger;
+router.post('/savevideo', fetchUser, (req, res) => {
   try {
-
     upload(req, res, (err) => {
       if (err) {
         console.log(err);
       } else {
-        // console.log("hello");
-
         const newVideo = new VideoSchema({
-          name: req.body.name,
+          // name: req.body.name,
           user: req.user.id,
           schema: req.user.id,
           video: req.file.path
         });
+
         newVideo.save()
-        
           .then(() => res.send('Successfully uploaded'))
           .catch((err) => console.log(err));
       }
