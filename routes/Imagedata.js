@@ -15,7 +15,10 @@ const Storage =multer.diskStorage({
     }
  })
  const upload = multer({
-    storage:Storage
+    storage:Storage,
+    limits: {
+        fileSize: 200 * 1024 * 1024, // 100MB in bytes
+      },
  }).single('image')
 
 
@@ -321,31 +324,37 @@ router.delete('/deleteImagedata3/:id',fetchUser,async(req,res)=>{
 
 
 
-router.post('/saveimagedata4',fetchUser,async(req,res)=>{
-    try{
-        upload5(req,res,(err)=>{
-            if(err){
-                console.log(err);
-            }else{
-                const newImage =new ImageSchema4({
-                    name: req.body.name,
-                    user:req.user.id,
-                    schema:req.user.id,  
-                    image:req.file.path
-                }) 
-                newImage.save()
-               
-                .then(()=>res.send('suscessfully uploaded'))
-                .catch((err)=>console.log(err))
-            }
-        })
-    }catch(error){
-        // console.error(error.message);
-        res.status(500).send("backend ki error")
-    }
-       
-})
 
+
+
+
+
+
+
+
+
+    router.post('/saveimagedata45',fetchUser, async (req, res) => {
+        try {
+            upload5(req, res, (err) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    const newImage = new ImageSchema4({
+                        name: req.body.name,
+                        user: req.user.id,
+                        schema: req.user.id,
+                        image: req.file.path
+                    });
+                    newImage.save()
+                        .then(() => res.send('successfully uploaded'))
+                        .catch((err) => console.log(err));
+                }
+            });
+        } catch (error) {
+            res.status(500).send("backend ki error");
+        }
+    });
+    
 router.get('/getallimagesdata4',fetchUser,async(req,res)=>{
     try{
         console.log(req.user.id);
@@ -377,6 +386,7 @@ router.delete('/deleteImagedata4/:id',fetchUser,async(req,res)=>{
 })
 
 })
+
 
 
 

@@ -16,8 +16,15 @@ app.use('/uploads2', express.static('uploads2'));
 app.use('/uploads3', express.static('uploads3'));
 app.use('/uploads4', express.static('uploads4'));
 app.use('/uploads5', express.static('uploads5'));
-app.use('/video', express.static('video'));
 app.use('/datas', express.static('datas'));
+app.use('/video', express.static('video'));
+app.use('/video2', express.static('video2'));
+app.use('/video3', express.static('video3'));
+app.use('/video4', express.static('video4'));
+app.use('/video5', express.static('video5'));
+app.use('/video6', express.static('video6'));
+app.use('/video7', express.static('video7'));
+app.use('/video8', express.static('video8'));
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/auth', require('./routes/auth'));
