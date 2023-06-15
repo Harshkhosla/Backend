@@ -15,7 +15,8 @@ var fetchUser = require('../middleware/fetchuser');
 const Storage = multer.diskStorage({
   destination: 'video',
   filename: (req, file, cb) => {
-    cb(null, file.originalname);
+    const uniqueFilename = `video-${uuidv4()}-${file.originalname}`;
+    cb(null, uniqueFilename);
   }
 });
 
@@ -197,7 +198,7 @@ router.post('/savevideo2', fetchUser, (req, res) => {
           name: req.body.name,
           user: req.user.id,
           schema: req.user.id,
-          video: `video-${uuidv4()}`
+          video: req.file.path
         });
 
         newVideo.save()
@@ -251,7 +252,7 @@ router.post('/savevideo3', fetchUser, (req, res) => {
           name: req.body.name,
           user: req.user.id,
           schema: req.user.id,
-          video: `video-${uuidv4()}`
+          video: req.file.path
         });
 
         newVideo.save()
@@ -306,7 +307,7 @@ router.post('/savevideo4', fetchUser, (req, res) => {
           name: req.body.name,
           user: req.user.id,
           schema: req.user.id,
-          video: `video-${uuidv4()}`
+          video: req.file.path
         });
 
         newVideo.save()
@@ -360,7 +361,7 @@ router.post('/savevideo5', fetchUser, (req, res) => {
           name: req.body.name,
           user: req.user.id,
           schema: req.user.id,
-          video: `video-${uuidv4()}`
+          video: req.file.path
         });
 
         newVideo.save()
@@ -415,7 +416,7 @@ router.post('/savevideo6', fetchUser, (req, res) => {
           name: req.body.name,
           user: req.user.id,
           schema: req.user.id,
-          video: `video-${uuidv4()}`
+          video: req.file.path
         });
 
         newVideo.save()
