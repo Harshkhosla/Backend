@@ -32,7 +32,8 @@ const upload = multer({
 const Storage2 = multer.diskStorage({
   destination: 'video2',
   filename: (req, file, cb) => {
-    cb(null, file.originalname);
+    const uniqueFilename = `video-${uuidv4()}-${file.originalname}`;
+    cb(null, uniqueFilename);
   }
 });
 
@@ -47,7 +48,8 @@ const upload2 = multer({
 const Storage3 = multer.diskStorage({
   destination: 'video3',
   filename: (req, file, cb) => {
-    cb(null, file.originalname);
+    const uniqueFilename = `video-${uuidv4()}-${file.originalname}`;
+    cb(null, uniqueFilename);
   }
 });
 
@@ -62,7 +64,8 @@ const upload3 = multer({
 const Storage4 = multer.diskStorage({
   destination: 'video4',
   filename: (req, file, cb) => {
-    cb(null, file.originalname);
+    const uniqueFilename = `video-${uuidv4()}-${file.originalname}`;
+    cb(null, uniqueFilename);
   }
 });
 
@@ -76,7 +79,8 @@ const upload4 = multer({
 const Storage5 = multer.diskStorage({
   destination: 'video5',
   filename: (req, file, cb) => {
-    cb(null, file.originalname);
+    const uniqueFilename = `video-${uuidv4()}-${file.originalname}`;
+    cb(null, uniqueFilename);
   }
 });
 
@@ -92,7 +96,8 @@ const upload5 = multer({
 const Storage6 = multer.diskStorage({
   destination: 'video6',
   filename: (req, file, cb) => {
-    cb(null, file.originalname);
+    const uniqueFilename = `video-${uuidv4()}-${file.originalname}`;
+    cb(null, uniqueFilename);
   }
 });
 
@@ -107,7 +112,8 @@ const upload6 = multer({
 const Storage7 = multer.diskStorage({
   destination: 'video7',
   filename: (req, file, cb) => {
-    cb(null, file.originalname);
+    const uniqueFilename = `video-${uuidv4()}-${file.originalname}`;
+    cb(null, uniqueFilename);
   }
 });
 
@@ -121,7 +127,8 @@ const upload7 = multer({
 const Storage8 = multer.diskStorage({
   destination: 'video8',
   filename: (req, file, cb) => {
-    cb(null, file.originalname);
+    const uniqueFilename = `video-${uuidv4()}-${file.originalname}`;
+    cb(null, uniqueFilename);
   }
 });
 
