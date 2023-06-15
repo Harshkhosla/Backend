@@ -7,6 +7,7 @@ const VideoSchema5 = require('../modules/Videosave5');
 const VideoSchema6 = require('../modules/Videosave6');
 const VideoSchema7 = require('../modules/Videosave7');
 const VideoSchema8 = require('../modules/Videosave8');
+const { v4: uuidv4 } = require('uuid');
 const router = express.Router();
 const multer = require('multer');
 var fetchUser = require('../middleware/fetchuser');
@@ -196,7 +197,7 @@ router.post('/savevideo2', fetchUser, (req, res) => {
           name: req.body.name,
           user: req.user.id,
           schema: req.user.id,
-          video: req.file.path
+          video: `video-${uuidv4()}`
         });
 
         newVideo.save()
@@ -250,7 +251,7 @@ router.post('/savevideo3', fetchUser, (req, res) => {
           name: req.body.name,
           user: req.user.id,
           schema: req.user.id,
-          video: req.file.path
+          video: `video-${uuidv4()}`
         });
 
         newVideo.save()
@@ -305,7 +306,7 @@ router.post('/savevideo4', fetchUser, (req, res) => {
           name: req.body.name,
           user: req.user.id,
           schema: req.user.id,
-          video: req.file.path
+          video: `video-${uuidv4()}`
         });
 
         newVideo.save()
@@ -359,7 +360,7 @@ router.post('/savevideo5', fetchUser, (req, res) => {
           name: req.body.name,
           user: req.user.id,
           schema: req.user.id,
-          video: req.file.path
+          video: `video-${uuidv4()}`
         });
 
         newVideo.save()
@@ -414,7 +415,7 @@ router.post('/savevideo6', fetchUser, (req, res) => {
           name: req.body.name,
           user: req.user.id,
           schema: req.user.id,
-          video: req.file.path
+          video: `video-${uuidv4()}`
         });
 
         newVideo.save()
