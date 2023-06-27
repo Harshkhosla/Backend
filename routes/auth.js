@@ -131,6 +131,20 @@ router.get('/admin/users', async (req, res) => {
   }
 });
 
+router.get('/user/:id', async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const user = await UserSignin.findById(userId).select("-password");
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    res.json(user);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal server error");
+  }
+});
 
 router.put('/UserInformation/:id',[fetchUser],async(req,res)=>{
   try{
