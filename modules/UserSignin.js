@@ -19,20 +19,23 @@ const UserSchema =new Schema({
         type: String,
         required:true
     },
-    adharNo:Number,
+    ProductId:String,
+    No_Of_chargers:Number,
     PhoneNo:Number,
-    BloodGroup:String,
+    Live_chargers:String,
     addressLine1: String, 
     addressLine2: String ,
     city:String,
     state:String ,
     postalCode:Number,
     Project:String,
-    Task:String,
-    TaskDescription:String,
+    Activity_status:String,
+    Remarks_Of_Activity:String,
     Time: String, 
     TotalTime: String ,
-    Status:String,
+    Status:{
+        type: String,
+    }, 
 
 })
 module.exports = mongoose.model('user',UserSchema)
