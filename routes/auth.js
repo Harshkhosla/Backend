@@ -106,11 +106,12 @@ router.post ('/getuser',fetchUser,async(req,res)=>{
   
   
 router.put('/updatename/:id',fetchUser,async(req,res)=>{
-    const {name}=req.body;
+    const {name,ProductId}=req.body;
     // debugger
     userID=req.user.id;
     const newNote={}
     if(name){newNote.name=name}
+    if(ProductId){newNote.ProductId=ProductId}
        
 //  console.log(req);
     let note =await UserSignin.findById(req.params.id);
@@ -130,6 +131,27 @@ router.get('/admin/users', async (req, res) => {
     res.status(500).send('Internal server error');
   }
 });
+
+router.get('/admin/Chargers', async (req, res) => {
+  try {
+    const users = await UserSignin.find().select('-password');
+    let totalChargers = users.length;
+    let totalActiveUsers = 0;
+
+    for (const user of users) {
+      if (user.Activity_status === "Active") {
+        totalActiveUsers++;
+      }
+    }
+
+    res.json({ totalChargers, totalActiveUsers });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Internal server error');
+  }
+});
+
+
 
 router.get('/user/:id', async (req, res) => {
   try {
@@ -151,24 +173,24 @@ router.put('/UserInformation/:id',[fetchUser],async(req,res)=>{
       // const errors = validationResult(req);
       userID=req.user.id;
       let user =await UserSignin.findOne({email:req.body.email});
-if (user){
-    return res.status(400).json({error:"Sorry user already exists "})
-}
-const {adharNo,PhoneNo,BloodGroup,addressLine1,addressLine2,city,state,postalCode,Project,Task,TaskDescription,Time,TotalTime,Status}=req.body
+// if (user){
+//     return res.status(400).json({error:"Sorry user already exists "})
+// }
+const {No_Of_chargers,PhoneNo,Live_chargers,addressLine1,addressLine2,city,state,postalCode,Project,Activity_status,Remarks_Of_Activity,Time,TotalTime,Status}=req.body
 // const addressLine1=req.body.addressLine1
 const newInformation={}
 
-if(adharNo){newInformation.adharNo=adharNo}
+if(No_Of_chargers){newInformation.No_Of_chargers=No_Of_chargers}
 if(PhoneNo){newInformation.PhoneNo=PhoneNo}
-if(BloodGroup){newInformation.BloodGroup=BloodGroup}
+if(Live_chargers){newInformation.Live_chargers=Live_chargers}
 if(addressLine1){newInformation.addressLine1=addressLine1}
 if(addressLine2){newInformation.addressLine2=addressLine2}
 if(city){newInformation.city=city}
 if(state){newInformation.state=state}
 if(postalCode){newInformation.postalCode=postalCode}
 if(Project){newInformation.Project=Project}
-if(Task){newInformation.Task=Task}
-if(TaskDescription){newInformation.TaskDescription=TaskDescription}
+if(Activity_status){newInformation.Activity_status=Activity_status}
+if(Remarks_Of_Activity){newInformation.Remarks_Of_Activity=Remarks_Of_Activity}
 if(Time){newInformation.Time=Time}
 if(TotalTime){newInformation.TotalTime=TotalTime}
 if(Status){newInformation.Status=Status}
