@@ -38,6 +38,7 @@ app.use('/api/information', require('./routes/Information'));
 app.use('/api/subscriber', require('./routes/subscriber'));
 app.use('/api/publisher', require('./routes/publisher'));
 app.use('/api/video', require('./routes/Videodata'));
+// app.use('/api/mqttController', require('./routes/mqttController'));
 
 const server = http.createServer(app);
 

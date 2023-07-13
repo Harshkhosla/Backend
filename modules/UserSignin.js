@@ -30,12 +30,19 @@ const UserSchema =new Schema({
     postalCode:Number,
     Project:String,
     Activity_status:String,
-    Remarks_Of_Activity:String,
+    Notifications :String,
     Time: String, 
+    BoughtStatus:String,
     TotalTime: String ,
+    Charging_mode:String,
     Status:{
         type: String,
     }, 
+    Input_current:Number,
+    Input_voltage:Number,
+    
+    Output_current:Number,
+    Output_voltage:Number,
 
 })
 module.exports = mongoose.model('user',UserSchema)
