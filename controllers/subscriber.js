@@ -1,5 +1,3 @@
-
-
 const mqttService = require("../service/mqttService");
 
 // Change this to point to your MQTT broker
