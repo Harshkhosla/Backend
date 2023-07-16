@@ -180,9 +180,10 @@ router.put('/UserInformation/:id', [fetchUser], async (req, res) => {
     // if (user){
     //     return res.status(400).json({error:"Sorry user already exists "})
     // }
-    const { ProductId, Charging_mode, Input_current, Output_current, Output_voltage, Input_voltage, No_Of_chargers, PhoneNo, BoughtStatus, Live_chargers, addressLine1, addressLine2, city, state, postalCode, Project, Activity_status, Notifications, Time, TotalTime, Status } = req.body
+    const {name, ProductId, Charging_mode, Input_current, Output_current, Output_voltage, Input_voltage, No_Of_chargers, PhoneNo, BoughtStatus, Live_chargers, addressLine1, addressLine2, city, state, postalCode, Project, Activity_status, Notifications, Time, TotalTime, Status } = req.body
     // const addressLine1=req.body.addressLine1
     const newInformation = {}
+    if (name) { newNote.name = name }
     if (ProductId) { newInformation.ProductId = ProductId }
     if (Charging_mode) { newInformation.Charging_mode = Charging_mode }
     if (Input_current) { newInformation.Input_current = Input_current }
