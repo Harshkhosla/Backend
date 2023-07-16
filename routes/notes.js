@@ -129,19 +129,6 @@ router.put('/updatenote/:id',fetchUser,async(req,res)=>{
         return res.status(401).send('Hacker')
     }
 // xxxx
-
-
-
-
-
-
-
-
-
-
-
-
-
     note = await Notes.findByIdAndUpdate(req.params.id,{$set:newNote},{new:true})
     res.json({note})
 
@@ -168,4 +155,8 @@ router.get('/deletenoteee',(req,res)=> {
     // res.send(req.body)
     res.send("hello")
     })
+
+
+
+
 module.exports=router;  

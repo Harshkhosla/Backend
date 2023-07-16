@@ -8,4 +8,5 @@ var publisherController = require("../controllers/publisher");
 
 router.post("/", publisherController.publishMQTTMessage);
 
+
 module.exports = router;

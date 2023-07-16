@@ -180,10 +180,11 @@ router.put('/UserInformation/:id', [fetchUser], async (req, res) => {
     // if (user){
     //     return res.status(400).json({error:"Sorry user already exists "})
     // }
-    const { ProductId, Charging_mode, Input_current, Output_current, Output_voltage, Input_voltage, No_Of_chargers, PhoneNo, BoughtStatus, Live_chargers, addressLine1, addressLine2, city, state, postalCode, Project, Activity_status, Notifications, Time, TotalTime, Status } = req.body
+    const { ProductId,userDetails, Charging_mode, Input_current, Output_current, Output_voltage, Input_voltage, No_Of_chargers, PhoneNo, BoughtStatus, Live_chargers, addressLine1, addressLine2, city, state, postalCode, Project, Activity_status, Notifications, Time, TotalTime, Status } = req.body
     // const addressLine1=req.body.addressLine1
     const newInformation = {}
     if (ProductId) { newInformation.ProductId = ProductId }
+    if (userDetails) { newInformation.userDetails = userDetails }
     if (Charging_mode) { newInformation.Charging_mode = Charging_mode }
     if (Input_current) { newInformation.Input_current = Input_current }
     if (Input_voltage) { newInformation.Input_voltage = Input_voltage }
@@ -195,8 +196,8 @@ router.put('/UserInformation/:id', [fetchUser], async (req, res) => {
     if (Live_chargers) { newInformation.Live_chargers = Live_chargers }
     if (addressLine1) { newInformation.addressLine1 = addressLine1 }
     if (addressLine2) { newInformation.addressLine2 = addressLine2 }
-    if (city) { newInformation.city = city }
-    if (state) { newInformation.state = state }
+    // if (city) { newInformation.city = city }
+    // if (state) { newInformation.state = state }
     if (postalCode) { newInformation.postalCode = postalCode }
     if (Project) { newInformation.Project = Project }
     if (Activity_status) { newInformation.Activity_status = Activity_status }
