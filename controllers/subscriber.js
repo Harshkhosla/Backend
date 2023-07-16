@@ -11,7 +11,7 @@ exports.subscriberController = async function (req, res) {
   try {
     const topic = req.body.topic;
     // const message = req.body.message;
-
+    // const product_Topic=`${topic}_Notifications`
     console.log(`Request Topic :: ${topic}`);
     // console.log(`Request Message :: ${message}`);
 
