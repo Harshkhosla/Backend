@@ -9,9 +9,9 @@ const JWT_SECRET = "harh$"
 
 
 router.post('/createuser', [
-  body('name', 'what dude').isLength({ min: 3 }),
-  body('email').isEmail(),
-  body('password').isLength({ min: 2 }),
+  body('name', 'Name must be at least 3 characters long').isLength({ min: 3 }),
+  body('email', 'Invalid email').isEmail(),
+  body('password', 'Password must be at least 4 characters long').isLength({ min: 4 }),
 ], async (req, res) => {
   let success = false;
   const error = validationResult(req);

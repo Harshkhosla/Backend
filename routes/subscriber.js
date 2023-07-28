@@ -10,7 +10,8 @@ router.post("/", subscriberController.subscriberController);
 // router.post("/", publisherController.publishMQTTMessage);
 
 router.get('/data/:topic', async (req, res) => {
-    const ProductId = req.params.ProductId;
+    const ProductId = req.params.topic;
+    console.log(ProductId);
     try {
       const events = await Events.find({ ProductId });
       res.status(200).json(events);

@@ -34,7 +34,7 @@ class MQTTService {
       // sendDataToClient(topic)
       let data = message.toString();
       data = JSON.parse(data);
-      data._id = "rvg3sdeeeee28e8c";
+      // data._id = "rvg3sdeeeee28e8c";
       console.log(data);
       await saveData(data,topic);
     });
