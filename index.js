@@ -1,7 +1,6 @@
 const ConnectToMongo = require('./db');
 const express = require('express');
 const cors = require('cors');
-// const WebSocket = require('ws');
 const http = require('http');
 
 ConnectToMongo();
@@ -43,29 +42,10 @@ app.use('/api/data', require('./routes/data'));
 
 const server = http.createServer(app);
 
-// const wss = new WebSocket.Server({ server });
-
-// wss.on('connection', (ws) => {
-//   console.log('WebSocket client connected');
-
-//   ws.on('message', (message) => {
-//     console.log('Received message:', message);
-
-//     // Process the received message as needed
-
-//     // Example: Echo the message back to the WebSocket client
-//     ws.send(`You sent: ${message}`);
-//   });
-
-//   ws.on('close', () => {
-//     console.log('WebSocket client disconnected');
-//   });
-// });
-
 server.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
 
-app.get('/', (req, res, next) => {
-  return res.json('We are up and running');
-});
+// app.get('/', (req, res, next) => {
+//   return res.json('We are up and running');
+// });
