@@ -37,3 +37,6 @@ jobs:
 
       - name: Restart BackendAPI
         run: pm2 restart index.js
+
+      - name: Restart BackendAPI
+        run: pm2 save
