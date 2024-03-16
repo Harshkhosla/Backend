@@ -36,7 +36,7 @@ jobs:
         run: npm i
 
       - name: Restart BackendAPI
-        run: pm2 restart index.js
+        run: pm2 restart index
 
       - name: Restart BackendAPI
         run: pm2 save
